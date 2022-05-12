@@ -30,7 +30,7 @@ jobs:
               run: |
                   rm -rf source/wp-content/themes/wporg-parent-2021/node_modules
                   mv source/wp-content/themes/wporg-parent-2021 $RUNNER_TEMP
-                  git rm -rf .
+                  git rm -rfq .
                   rm -rf *
                   mv $RUNNER_TEMP/wporg-parent-2021/* .
 
