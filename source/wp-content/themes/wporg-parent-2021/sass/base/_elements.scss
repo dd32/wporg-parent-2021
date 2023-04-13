@@ -12,6 +12,11 @@ a {
 	}
 }
 
+// Text highlighted via the editor
+mark.has-inline-color {
+	background-color: transparent;
+}
+
 // Links that appear in the main content area
 .block-editor-block-list__layout a, // Needed for the post area
 .wp-block-post-content a {
@@ -23,27 +28,52 @@ a {
 	}
 }
 
+// For links that navigate users to different site
+a.external-link::after,
+.external-link > a:not([href*="wordpress.org"])::after {
+	content: "";
+	display: inline-flex;
+	background-color: currentcolor;
+	width: 1em;
+	height: 1em;
+	margin-left: 0.1em;
+	vertical-align: middle;
+	mask-image: url(../images/external-link-icon.svg);
+	mask-size: cover;
+}
+
+// Inline code tags should use the monospace font.
+code {
+	font-family: var(--wp--preset--font-family--monospace);
+}
 
 // Captions
-.wp-block-gallery.wp-block-gallery, // Double class for increased specificity.
 figure[class*="wp-block-"],
 [class*="wp-block-"] {
-	figcaption {
-		font-size: var(--wp--custom--gallery--caption--font-size);
-		text-align: right;
-		margin-top: 1em;
-		margin-bottom: 1em;
+	figcaption,
+	.wp-element-caption {
+		text-align: center;
 	}
 
 	&.wp-block-gallery.has-nested-images {
-		> figcaption {
-			margin-top: 0;
-		}
-	}
-
-	&.alignfull {
-		> figcaption {
-			padding-right: var(--wp--style--block-gap);
+		figure.wp-block-image {
+			display: block;
+	
+			&:not(#individual-image) a,
+			&:not(#individual-image) img {
+				height: auto;
+			}
+	
+			figcaption,
+			.wp-element-caption {
+				position: static;
+				margin: calc(var(--wp--style--block-gap) / 2) 0 0;
+				padding: 0;
+				background: transparent;
+				color: var(--wp--preset--color--charcoal-4);
+				font-size: var(--wp--custom--gallery--caption--font-size);
+				line-height: 1.6;
+			}
 		}
 	}
 }
@@ -93,4 +123,72 @@ input[type="checkbox"] + label {
 	display: inline;
 	margin-left: 0.5em;
 	line-height: 1em; // stylelint-disable-line declaration-property-unit-allowed-list
+}
+
+// Headings.
+// Add margin to default h2 & h3 (no font size changes).
+.wp-site-blocks h2:not([class*="-font-size"], [style*="font-size"]) {
+	margin-top: var(--wp--preset--spacing--40);
+}
+
+.wp-site-blocks h3:not([class*="-font-size"], [style*="font-size"]) {
+	margin-top: var(--wp--preset--spacing--30);
+}
+
+// Line heights for custom sizes.
+.has-extra-small-font-size {
+	line-height: var(--wp--custom--body--extra-small--typography--line-height);
+}
+
+.has-small-font-size {
+	line-height: var(--wp--custom--body--small--typography--line-height);
+}
+
+.has-normal-font-size {
+	line-height: var(--wp--custom--body--typography--line-height);
+}
+
+.has-large-font-size {
+	line-height: var(--wp--custom--body--large--typography--line-height);
+}
+
+.has-extra-large-font-size {
+	line-height: var(--wp--custom--body--extra-large--typography--line-height);
+}
+
+.has-huge-font-size {
+	line-height: var(--wp--custom--body--huge--typography--line-height);
+}
+
+.has-heading-6-font-size {
+	line-height: var(--wp--custom--heading--level-6--typography--line-height);
+}
+
+.has-heading-5-font-size {
+	line-height: var(--wp--custom--heading--level-5--typography--line-height);
+}
+
+.has-heading-4-font-size {
+	line-height: var(--wp--custom--heading--level-4--typography--line-height);
+}
+
+.has-heading-3-font-size {
+	line-height: var(--wp--custom--heading--level-3--typography--line-height);
+}
+
+.has-heading-2-font-size {
+	line-height: var(--wp--custom--heading--level-2--typography--line-height);
+}
+
+.has-heading-1-font-size {
+	line-height: var(--wp--custom--heading--level-1--typography--line-height);
+}
+
+.has-heading-cta-font-size {
+	line-height: var(--wp--custom--heading--cta--typography--line-height);
+}
+
+// Helper class for template part containers.
+.has-display-contents {
+	display: contents;
 }

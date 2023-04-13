@@ -61,10 +61,116 @@ function setup_block_styles() {
 			'style_handle' => STYLE_HANDLE,
 		)
 	);
+
+	register_block_style(
+		'core/button',
+		array(
+			'name'         => 'fill-on-dark',
+			'label'        => __( 'Fill on dark', 'wporg' ),
+		)
+	);
+
+	register_block_style(
+		'core/button',
+		array(
+			'name'         => 'outline-on-dark',
+			'label'        => __( 'Outline on dark', 'wporg' ),
+		)
+	);
+
+	register_block_style(
+		'core/list',
+		array(
+			'name'         => 'features',
+			'label'        => __( 'Features', 'wporg' ),
+			'style_handle' => STYLE_HANDLE,
+		)
+	);
+
+	register_block_style(
+		'core/list',
+		array(
+			'name'         => 'links-list',
+			'label'        => __( 'Links', 'wporg' ),
+		)
+	);
+
+	register_block_style(
+		'core/paragraph',
+		array(
+			'name'         => 'serif',
+			'label'        => __( 'Serif', 'wporg' ),
+			'style_handle' => STYLE_HANDLE,
+		)
+	);
+
+	register_block_style(
+		'core/paragraph',
+		array(
+			'name'         => 'short-text',
+			'label'        => __( 'Short text', 'wporg' ),
+			'style_handle' => STYLE_HANDLE,
+		)
+	);
+
+	register_block_style(
+		'core/heading',
+		array(
+			'name'         => 'with-arrow',
+			'label'        => __( 'Link & Arrow', 'wporg' ),
+			'style_handle' => STYLE_HANDLE,
+		)
+	);
+
+	register_block_style(
+		'core/navigation',
+		array(
+			'name'         => 'dots',
+			'label'        => __( 'Dots', 'wporg' ),
+			'style_handle' => STYLE_HANDLE,
+		)
+	);
+
+	register_block_style(
+		'core/group',
+		array(
+			'name'         => 'brush-stroke',
+			'label'        => __( 'Brush Stroke', 'wporg' ),
+			'style_handle' => STYLE_HANDLE,
+		)
+	);
+
+	register_block_style(
+		'core/list',
+		array(
+			'name'         => 'list-long-items',
+			'label'        => __( 'Long items', 'wporg' ),
+			'style_handle' => STYLE_HANDLE,
+		)
+	);
+
+	register_block_style(
+		'core/navigation',
+		array(
+			'name'         => 'dropdown-on-mobile',
+			'label'        => __( 'Dropdown on Mobile', 'wporg' ),
+			'style_handle' => STYLE_HANDLE,
+		)
+	);
+
+	register_block_style(
+		'core/search',
+		array(
+			'name'         => 'secondary-search-control',
+			'label'        => __( 'Secondary', 'wporg' ),
+			'style_handle' => STYLE_HANDLE,
+		)
+	);
 }
 
 /**
- * Add our custom block style assets — CSS for the layout, and JS to register block variations.
+ * Add our custom block style assets — CSS for the layout, and JS to register
+ * block variations & add custom styles.
  */
 function register_assets() {
 	wp_register_style(
@@ -73,12 +179,13 @@ function register_assets() {
 		array(),
 		filemtime( dirname( __DIR__ ) . '/build/block-styles.css' )
 	);
+	wp_style_add_data( STYLE_HANDLE, 'rtl', 'replace' );
 
 	if ( is_admin() ) {
 		wp_enqueue_script(
-			'wporg-parent-block-variations',
+			'wporg-parent-block-tweaks',
 			get_template_directory_uri() . '/js/blocks.js',
-			array( 'wp-blocks', 'wp-i18n' ),
+			array( 'wp-blocks', 'wp-hooks', 'wp-i18n' ),
 			filemtime( dirname( __DIR__ ) . '/js/blocks.js' )
 		);
 	}
