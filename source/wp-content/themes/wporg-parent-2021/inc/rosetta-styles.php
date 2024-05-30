@@ -27,7 +27,7 @@ function inject_i18n_customizations( $theme_json ) {
 		'settings' => $locale_settings,
 	);
 
-	return new \WP_Theme_JSON( $config, 'custom' );
+	return new \WP_Theme_JSON_Data( $config, 'custom' );
 }
 
 /**
@@ -46,7 +46,7 @@ function inject_i18n_customizations( $theme_json ) {
 function get_locale_customizations( $locale ) {
 	switch ( $locale ) {
 		case 'ca':
-		case 'fr':
+		case 'fr_FR':
 		case 'it_IT':
 		case 'ro_RO':
 			return [
