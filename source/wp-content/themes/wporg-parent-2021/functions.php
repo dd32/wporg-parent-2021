@@ -77,6 +77,15 @@ function enqueue_assets() {
 		filemtime( __DIR__ . '/build/style.css' )
 	);
 	wp_style_add_data( 'wporg-parent-2021-style', 'rtl', 'replace' );
+
+	wp_enqueue_style(
+		'wporg-parent-2021-print',
+		get_template_directory_uri() . '/build/print.css',
+		array( 'wporg-parent-2021-style' ),
+		filemtime( __DIR__ . '/build/print.css' ),
+		'print'
+	);
+	wp_style_add_data( 'wporg-parent-2021-print', 'rtl', 'replace' );
 }
 
 /**
