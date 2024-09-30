@@ -995,37 +995,5 @@
 			"title": "No Secondary Content",
 			"postTypes": [ "page", "post" ]
 		}
-	],
-	"templateParts": [
-		{
-			"name": "header",
-			"title": "Header",
-			"area": "header"
-		},
-		{
-			"name": "cover",
-			"title": "Cover",
-			"area": "uncategorized"
-		},
-		{
-			"name": "entry-header",
-			"title": "Post Header",
-			"area": "uncategorized"
-		},
-		{
-			"name": "entry-header-no-meta",
-			"title": "Page Header",
-			"area": "uncategorized"
-		},
-		{
-			"name": "footer-simple",
-			"title": "Footer without Secondary Content",
-			"area": "footer"
-		},
-		{
-			"name": "footer",
-			"title": "Footer",
-			"area": "footer"
-		}
 	]
 }
