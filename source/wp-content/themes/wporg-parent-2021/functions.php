@@ -54,10 +54,6 @@ function theme_support() {
 	// Experimental support for adding blocks inside nav menus
 	add_theme_support( 'block-nav-menus' );
 
-	// Remove the default margin-top added when the admin bar is used, this is
-	// handled by the theme, in `_site-header.scss`.
-	add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) );
-
 	register_block_pattern_category(
 		'wporg',
 		array(
